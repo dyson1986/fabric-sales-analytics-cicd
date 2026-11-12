@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/reportExtension/1.0.0/schema.json",
+  "name": "extension",
+  "entities": [
+    {
+      "name": "sales_gold_region_product",
+      "measures": [
+        {
+          "name": "Total Net Sales",
+          "dataType": "Double",
+          "expression": "SUM(sales_gold_region_product[NetSales])",
+          "formatString": "General Number"
+        },
+        {
+          "name": "Total Orders",
+          "dataType": "Double",
+          "expression": "SUM(sales_gold_region_product[OrderCount])",
+          "formatString": "General Number"
+        },
+        {
+          "name": "Units Sold",
+          "dataType": "Double",
+          "expression": "SUM(sales_gold_region_product[UnitsSold])",
+          "formatString": "General Number"
+        }
+      ]
+    }
+  ]
+}

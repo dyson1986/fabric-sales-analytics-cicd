@@ -1,0 +1,11 @@
+expression 'DirectLake - LH_SalesAnalytics' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/ee32ee6e-6a87-41a9-b7dd-6eba291bbfe5/897d62f6-47a7-419b-8038-bdc74bcc0603", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: 17fb374c-b373-4cbb-8494-87596341020b
+
+	annotation PBI_IncludeFutureArtifacts = False
+
+	annotation PBI_RemovedChildren = [{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[sales_silver]"}},"objectType":"Table"}]
+
