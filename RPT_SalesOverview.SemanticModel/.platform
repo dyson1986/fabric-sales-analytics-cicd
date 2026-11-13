@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "RPT_SalesOverview"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1059eddd-c8ee-9429-4c83-db6c9f34b7ec"
+  }
+}

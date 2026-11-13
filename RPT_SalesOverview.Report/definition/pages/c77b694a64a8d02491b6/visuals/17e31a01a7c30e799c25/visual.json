@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "17e31a01a7c30e799c25",
+  "position": {
+    "x": 451.35135135135135,
+    "y": 9.45945945945946,
+    "z": 1004,
+    "height": 58.108108108108112,
+    "width": 313.51351351351354,
+    "tabOrder": 1004
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Sales Dashboard",
+                    "textStyle": {
+                      "fontFamily": "Cambria",
+                      "fontSize": "32pt",
+                      "color": "#12239e"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
