@@ -14,7 +14,6 @@ tenant_id = os.environ["AZURE_TENANT_ID"]
 client_id = os.environ["AZURE_CLIENT_ID"]
 client_secret = os.environ["AZURE_CLIENT_SECRET"]
 workspace_id = os.environ["FABRIC_WORKSPACE_ID"]
-environment = os.getenv("FABRIC_ENVIRONMENT", "TEST")
 
 # Authenticate using Service Principal
 credential = ClientSecretCredential(
@@ -26,7 +25,6 @@ credential = ClientSecretCredential(
 # Configure target Fabric workspace
 target_workspace = FabricWorkspace(
     workspace_id=workspace_id,
-    environment=environment,
     repository_directory=str(FABRIC_DIR),
     item_type_in_scope=[
         "Lakehouse",
@@ -38,7 +36,6 @@ target_workspace = FabricWorkspace(
     token_credential=credential,
 )
 
-print(f"Starting deployment to {environment}...")
+print(f"Starting deployment to workspace: {workspace_id}...")
 publish_all_items(target_workspace)
-
-print(f"Deployment to {environment} completed successfully.")
+print("Deployment completed successfully.")
