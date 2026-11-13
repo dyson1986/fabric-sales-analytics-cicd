@@ -2,10 +2,7 @@
 - stage: Deploy_Prod
   displayName: 'Deploy Fabric Items to PROD'
   dependsOn: Deploy_Test
-  condition: and(
-    succeeded(),
-    eq(variables['Build.SourceBranch'], 'refs/heads/main')
-    )
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
   jobs:
   - deployment: DeployProd
     displayName: 'Deploy to PROD Workspace'
