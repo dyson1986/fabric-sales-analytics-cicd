@@ -1,26 +1,38 @@
 
-    - script: |
-        echo "===== PIPELINE CHECKOUT DETAILS ====="
-        echo "Branch: $(Build.SourceBranch)"
-        echo "Commit: $(Build.SourceVersion)"
-        echo "Repository: $(Build.SourcesDirectory)"
+trigger:
+  branches:
+    include:
+      - main
 
-        echo "===== ROOT FILES ====="
-        ls -la "$(Build.SourcesDirectory)"
+pool:
+  vmImage: 'ubuntu-latest'
 
-        echo "===== PYTHON SCRIPT CONTENT ====="
-        cat "$(Build.SourcesDirectory)/scripts/validate_repo.py"
+stages:
+  - stage: Validate
+    displayName: 'Validate Fabric Repository'
+    jobs:
+      - job: ValidateRepo
+        displayName: 'Check Fabric Items'
+        steps:
+          - checkout: self
 
-        echo "===== CHECK REQUIREMENTS ====="
-        test -f "$(Build.SourcesDirectory)/requirements.txt" || {
-          echo "ERROR: Root requirements.txt is missing"
-          exit 1
-        }
+          - task: UsePythonVersion@0
+            inputs:
+              versionSpec: '3.12'
 
-        echo "===== INSTALL DEPENDENCIES ====="
-        python -m pip install --upgrade pip
-        python -m pip install -r "$(Build.SourcesDirectory)/requirements.txt"
+          - script: |
+              echo "Branch: $(Build.SourceBranch)"
+              echo "Commit: $(Build.SourceVersion)"
+              echo "Repository files:"
+              ls -la "$(Build.SourcesDirectory)"
 
-        echo "===== RUN REPOSITORY VALIDATION ====="
-        python "$(Build.SourcesDirectory)/scripts/validate_repo.py"
-      displayName: 'Diagnose and validate Fabric repository'
+              echo "Checking requirements.txt..."
+              test -f "$(Build.SourcesDirectory)/requirements.txt"
+
+              echo "Installing dependencies..."
+              python -m pip install --upgrade pip
+              python -m pip install -r "$(Build.SourcesDirectory)/requirements.txt"
+
+              echo "Running validation..."
+              python "$(Build.SourcesDirectory)/scripts/validate_repo.py"
+            displayName: 'Validate Fabric repository'
