@@ -90,6 +90,16 @@ display(gold)
 
 # CELL ********************
 
+# Validation: Count records in the Gold layer
+gold_count = gold.count()
+
+print(f"Gold layer validation count: {gold_count}")
+
+# Basic validation
+if gold_count == 0:
+    raise Exception("Validation failed: Gold layer contains no records")
+else:
+    print("Validation passed: Gold layer contains records")
 
 # METADATA ********************
 
