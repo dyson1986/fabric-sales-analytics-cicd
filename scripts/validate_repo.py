@@ -1,15 +1,21 @@
 from pathlib import Path
 
+ROOT_DIR = Path(__file__).resolve().parent.parent
+
 required_items = [
-    "fabric/LH_SalesAnalytics.Lakehouse",
-    "fabric/NB_TransformSales.Notebook",
-    "fabric/PL_LoadSales.DataPipeline",
+    "LH_SalesAnalytics.Lakehouse",
+    "NB_TransformSales.Notebook",
+    "PL_LoadSales.DataPipeline",
+    "RPT_SalesOverview.Report",
+    "RPT_SalesOverview.SemanticModel",
 ]
 
 print("Starting Fabric repository validation...")
 
 for item in required_items:
-    if Path(item).exists():
+    item_path = ROOT_DIR / item
+
+    if item_path.exists():
         print(f"PASS: {item}")
     else:
         raise FileNotFoundError(f"Missing required item: {item}")
