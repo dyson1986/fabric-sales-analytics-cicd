@@ -1,3 +1,22 @@
+trigger:
+  branches:
+    include:
+      - feature/add-cicd-files
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - group: fabric-cicd-secrets
+  - group: fabric-cicd-config
+
+stages:
+- stage: Validate
+  # Your existing Validate jobs
+
+- stage: Deploy_Test
+  # Your existing TEST deployment jobs
 
 - stage: Deploy_Prod
   displayName: 'Deploy Fabric Items to PROD'
