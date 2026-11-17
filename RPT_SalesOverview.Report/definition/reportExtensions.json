@@ -8,20 +8,17 @@
         {
           "name": "Total Net Sales",
           "dataType": "Double",
-          "expression": "SUM(sales_gold_region_product[NetSales])",
-          "formatString": "General Number"
+          "expression": "SUM(sales_gold_region_product[NetSales])"
         },
         {
           "name": "Total Orders",
           "dataType": "Double",
-          "expression": "SUM(sales_gold_region_product[OrderCount])",
-          "formatString": "General Number"
+          "expression": "SUM(sales_gold_region_product[OrderCount])"
         },
         {
           "name": "Units Sold",
           "dataType": "Double",
-          "expression": "SUM(sales_gold_region_product[UnitsSold])",
-          "formatString": "General Number"
+          "expression": "SUM(sales_gold_region_product[UnitsSold])"
         }
       ]
     }
